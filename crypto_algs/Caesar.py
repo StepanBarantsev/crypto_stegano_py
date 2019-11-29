@@ -8,7 +8,7 @@ class Caesar:
     def __init__(self):
         pass
 
-    def encrypt(self, sequence, shift):
+    def encrypt(self, sequence: bytes, shift: int) -> bytes:
         if type(sequence) != bytes:
             raise TypeError('Type of sequence must be bytes')
         if type(shift) != int:
@@ -32,3 +32,8 @@ class Caesar:
 
     def decrypt_text_without_shift(self, text):
         pass
+
+
+testObj = Caesar()
+seq = testObj.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', 0)
+print(seq)

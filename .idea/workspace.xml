@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crypto_algs/Caesar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="238">
+              <caret line="17" column="72" lean-forward="true" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -99,6 +99,12 @@
               <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
               <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
               <item name="crypto_algs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
+              <item name="crypto_algs" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
@@ -244,8 +250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crypto_algs/Caesar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="238">
+          <caret line="17" column="72" lean-forward="true" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
         </state>
       </provider>
     </entry>
