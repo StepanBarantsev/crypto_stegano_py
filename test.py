@@ -1,3 +1,0 @@
-b = b'\xd0\x91\xd0\xb0\xd0\xb9\xd1\x82\xd1\x8b'
-b = [i for i in b]
-print(bytearray(b))
