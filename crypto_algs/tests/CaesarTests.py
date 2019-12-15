@@ -33,3 +33,9 @@ def test_encrypt_255_shift():
 def test_encrypt_42_shift():
     assert Caesar.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', 42) == \
            b'\xfb\xbc\xfb\xdb\xfb\xe4\xfc\xad\xfc\xb6'
+
+
+def test_decrypt_encrypted_sequence():
+    for i in range(300):
+        assert Caesar.decrypt(Caesar.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', i), i) == \
+               b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c'
