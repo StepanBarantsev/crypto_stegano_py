@@ -1,13 +1,9 @@
-from helpers.exceptions import CryptoException
-# Given a sequence of bytes. Add a few bits to each byte. Then we perform the operation mod 256
-# Also there are some text methods
-
-
 class Caesar:
 
     def __init__(self):
         pass
 
+    # Given a sequence of bytes. Add a few bits to each byte. Then we perform the operation mod 256
     @staticmethod
     def encrypt(sequence: bytes, shift: int) -> bytes:
         if type(sequence) != bytes:
@@ -19,19 +15,24 @@ class Caesar:
         new_sequence = [(element + shift) % 256 for element in sequence]
         return bytes(new_sequence)
 
-    def decrypt(self, encrypted_sequence, shift):
+    @staticmethod
+    def decrypt(encrypted_sequence, shift):
         pass
 
-    def decrypt_without_shift(self, encrypted_sequence):
+    @staticmethod
+    def decrypt_without_shift(encrypted_sequence):
         pass
 
-    def encrypt_text(self, text, shift):
+    @staticmethod
+    def encrypt_text(text, shift):
         pass
 
-    def decrypt_text(self, text, shift):
+    @staticmethod
+    def decrypt_text(text, shift):
         pass
 
-    def decrypt_text_without_shift(self, text):
+    @staticmethod
+    def decrypt_text_without_shift(text):
         pass
 
 
