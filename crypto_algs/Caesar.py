@@ -19,9 +19,13 @@ class Caesar:
     def decrypt(encrypted_sequence, shift):
         return Caesar.encrypt(encrypted_sequence, -shift)
 
+    # Returns a list of possible decryption
     @staticmethod
     def decrypt_without_shift(encrypted_sequence):
-        pass
+        lst = []
+        for i in range(256):
+            lst.append(Caesar.decrypt(encrypted_sequence, i))
+        return lst
 
     @staticmethod
     def encrypt_text(text, shift):
@@ -39,3 +43,6 @@ class Caesar:
 if __name__ == '__main__':
     seq = Caesar.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', 42)
     print(seq)
+    seq = Caesar.decrypt(seq, 42)
+    print(seq)
+    print(Caesar.decrypt_without_shift(b'\xff'))

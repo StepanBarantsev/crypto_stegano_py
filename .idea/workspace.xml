@@ -13,17 +13,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crypto_algs/Caesar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="511">
+              <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CLI/CLI.py">
+        <entry file="file://$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+            <state relative-caret-position="140">
+              <caret line="105" column="95" selection-start-line="105" selection-start-column="95" selection-end-line="105" selection-end-column="95" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,6 +40,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\xfb\xbc\xfb\xdb\xfb\xe4\xfc\xad\xfc\xb6</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -47,10 +55,10 @@
         <option value="$PROJECT_DIR$/helpers/file_methods.py" />
         <option value="$PROJECT_DIR$/helpers/exceptions.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/crypto_algs/Caesar.py" />
         <option value="$PROJECT_DIR$/CLI/CLI.py" />
+        <option value="$PROJECT_DIR$/crypto_algs/Caesar.py" />
+        <option value="$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py" />
       </list>
     </option>
   </component>
@@ -76,22 +84,13 @@
             <path>
               <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
               <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
-              <item name="CLI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
-              <item name="configs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
               <item name="crypto_algs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crypto_stegano_py" type="b2602c69:ProjectViewProjectNode" />
               <item name="crypto_stegano_py" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="crypto_algs" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -196,28 +195,47 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_CaesarTests_py - 2019.11.29 at 23h 07m 54s.xml">
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 34m 19s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.11.29 at 23h 08m 21s.xml">
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 34m 44s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.11.29 at 23h 08m 47s.xml">
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 35m 30s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.03 at 01h 41m 01s.xml">
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 36m 46s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 37m 03s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 38m 36s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 39m 28s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 40m 50s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 42m 04s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 44m 46s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -264,27 +282,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py">
+    <entry file="file://$PROJECT_DIR$/CLI/CLI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="19" column="72" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/crypto_algs/Caesar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="511">
+          <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CLI/CLI.py">
+    <entry file="file://$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        <state relative-caret-position="140">
+          <caret line="105" column="95" selection-start-line="105" selection-start-column="95" selection-end-line="105" selection-end-column="95" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
