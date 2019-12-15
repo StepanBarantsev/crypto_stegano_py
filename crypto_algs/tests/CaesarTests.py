@@ -1,5 +1,5 @@
 import pytest
-from crypto_stegano_py.crypto_algs.Caesar import Caesar
+from crypto_algs.Caesar import Caesar
 
 
 def setup_module(module):

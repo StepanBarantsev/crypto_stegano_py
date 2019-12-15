@@ -35,6 +35,7 @@ class Caesar:
     def decrypt_text_without_shift(text):
         pass
 
+
 if __name__ == '__main__':
     seq = Caesar.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', 42)
     print(seq)
