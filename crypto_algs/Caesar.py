@@ -1,3 +1,10 @@
+from helpers.exceptions import CryptoException
+
+
+class CaesarCryptoException(CryptoException):
+    pass
+
+
 class Caesar:
 
     def __init__(self):
@@ -27,17 +34,57 @@ class Caesar:
             lst.append(Caesar.decrypt(encrypted_sequence, i))
         return lst
 
+    # return text in lower case
     @staticmethod
-    def encrypt_text(text, shift):
-        pass
+    def encrypt_text(text, shift, lang):
+        if type(text) != str:
+            raise TypeError('Text must be str type')
+        if type(shift) != int:
+            raise TypeError('Type of shift must be integer')
+        alphabet_lower = Caesar.return_language_alphabet(lang)['lower']
+        alphabet_upper = Caesar.return_language_alphabet(lang)['upper']
+        text = text.lower()
+        ord_first_letter_lower = ord(alphabet_lower[0])
+        ord_first_letter_upper = ord(alphabet_upper[0])
+        new_text = ''
+        for i in text:
+            if i in alphabet_lower:
+                new_text += chr(((ord(i) - ord_first_letter_lower + shift) % len(alphabet_lower) + ord_first_letter_lower))
+            if i in alphabet_upper:
+                new_text += chr(((ord(i) - ord_first_letter_upper + shift) % len(alphabet_upper) + ord_first_letter_upper))
+            else:
+                new_text += i
+        return
 
     @staticmethod
-    def decrypt_text(text, shift):
-        pass
+    def decrypt_text(text, shift, lang):
+        return Caesar.encrypt_text(text, -shift, lang)
 
     @staticmethod
-    def decrypt_text_without_shift(text):
-        pass
+    def decrypt_text_without_shift(text, lang):
+        lst = []
+        for i in range(len(Caesar.return_language_alphabet(lang))):
+            lst.append(Caesar.encrypt_text(text, i, lang))
+        return lst
+
+    @staticmethod
+    def return_language_alphabet(language):
+        # letters must be in alphabet order
+        lang_dict = {"ru":
+                        {
+                         "lower": "абвгдежзийклмнопрстуфхцчшщъыьэюя",
+                         "upper": "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+                        },
+                     "en":
+                         {
+                          "lower": "abcdefghijklmnopqrstuvwxyz",
+                          "upper": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                         }
+                     }
+        try:
+            return lang_dict[language]
+        except KeyError:
+            raise CaesarCryptoException('Unsupported language. Language must be russian (ru) or english (en)')
 
 
 if __name__ == '__main__':

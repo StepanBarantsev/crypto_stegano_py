@@ -2,6 +2,8 @@ import pytest
 from crypto_algs.Caesar import Caesar
 
 
+# sequence assertions
+
 def setup_module(module):
     # init_something()
     pass
@@ -112,3 +114,63 @@ def test_decrypt_encrypted_sequence_without_shift():
                                                      b'\x0b', b'\n', b'\t', b'\x08',
                                                      b'\x07', b'\x06', b'\x05', b'\x04',
                                                      b'\x03', b'\x02', b'\x01', b'\x00']
+
+
+# text assertions
+
+def test_encrypt_zero_shift_ru():
+    Caesar.encrypt_text('Съешь ещё этих мягких французских булок да выпей чаю же!', 0, 'ru')
+
+
+def test_encrypt_single_shift_ru():
+    pass
+
+
+def test_encrypt_32_shift_ru():
+    pass
+
+
+def test_encrypt_31_shift_ru():
+    pass
+
+
+def test_encrypt_43_shift_ru():
+    pass
+
+
+def test_decrypt_encrypted_sequence_ru():
+    pass
+
+
+def test_decrypt_encrypted_text_without_shift_ru():
+    pass
+
+
+def test_encrypt_zero_shift_en():
+    pass
+
+
+def test_encrypt_single_shift_en():
+    pass
+
+
+def test_encrypt_32_shift_en():
+    pass
+
+
+def test_encrypt_31_shift_en():
+    pass
+
+
+def test_encrypt_43_shift_en():
+    pass
+
+
+def test_decrypt_encrypted_sequence_en():
+    pass
+
+
+def test_decrypt_encrypted_text_without_shift_en():
+    pass
+
+
