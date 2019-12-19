@@ -119,59 +119,132 @@ def test_decrypt_encrypted_sequence_without_shift():
 # text assertions
 
 def test_encrypt_zero_shift_ru():
-    assert 'Съешь ещё этих мягких французских булок да выпей чаю же!' == \
-           Caesar.encrypt_text('Съешь ещё этих мягких французских булок да выпей чаю же!', 0, 'ru')
+    assert 'Съешь еще этих мягких французских булок да выпей чаю же!' == \
+           Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', 0, 'ru')
 
 
 def test_encrypt_single_shift_ru():
-    pass
+    assert 'Тыжщэ жъж юуйц надлйц хсбочфитлйц вфмпл еб гьржк шбя зж!' == \
+           Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', 1, 'ru')
 
 
 def test_encrypt_32_shift_ru():
-    pass
+    assert 'Съешь еще этих мягких французских булок да выпей чаю же!' == \
+           Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', 32, 'ru')
 
 
 def test_encrypt_31_shift_ru():
-    pass
+    assert 'Рщдчы дшд ьсзф лювйзф упямхтжрйзф аткнй гя бъоди цяэ ед!' == \
+           Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', 31, 'ru')
 
 
 def test_encrypt_43_shift_ru():
-    pass
+    assert 'Ьергз рдр иэуа чкохуа яылшбютьхуа мюцщх пл нжърф влй ср!' == \
+           Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', 43, 'ru')
 
 
 def test_decrypt_encrypted_sequence_ru():
-    pass
+    for i in range(300):
+        assert Caesar.decrypt_text(
+            Caesar.encrypt_text('Съешь еще этих мягких французских булок да выпей чаю же!', i, 'ru'), i, 'ru') == \
+               'Съешь еще этих мягких французских булок да выпей чаю же!'
 
 
 def test_decrypt_encrypted_text_without_shift_ru():
-    pass
+    assert Caesar.decrypt_text_without_shift('Съешь еще этих мягких французских булок да выпей чаю же!', 'ru') \
+           == ['Съешь еще этих мягких французских булок да выпей чаю же!',
+               'Тыжщэ жъж юуйц надлйц хсбочфитлйц вфмпл еб гьржк шбя зж!',
+               'Уьзъю зыз яфкч обемкч цтвпшхйумкч гхнрм жв дэсзл щва из!',
+               'Фэиыя иьи ахлш пвжнлш чугрщцкфнлш дцосн зг еютим ъгб йи!',
+               'Хюйьа йэй бцмщ ргзомщ шфдсъчлхомщ ечпто ид жяуйн ыдв кй!',
+               'Цякэб кюк вчнъ сдипнъ щхетышмцпнъ жшруп йе зафко ьег лк!',
+               'Чалюв лял гшоы тейроы ъцжуьщнчроы зщсфр кж ибхлп эжд мл!',
+               'Шбмяг мам дщпь ужкспь ычзфэъошспь иътхс лз йвцмр юзе нм!',
+               'Щвнад нбн еърэ фзлтрэ ьшихюыпщтрэ йыуцт ми кгчнс яиж он!',
+               'Ъгобе ово жысю химусю эщйцяьръусю кьфчу нй лдшот айз по!',
+               'Ыдпвж пгп зьтя цйнфтя юъкчаэсыфтя лэхшф ок мещпу бки рп!',
+               'Ьергз рдр иэуа чкохуа яылшбютьхуа мюцщх пл нжърф влй ср!',
+               'Эжсди сес йюфб шлпцфб аьмщвяуэцфб нячъц рм озысх гмк тс!',
+               'Юзтей тжт кяхв щмрчхв бэнъгафючхв оашыч сн пиьтц днл ут!',
+               'Яиужк узу лацг ънсшцг вюоыдбхяшцг пбщьш то рйэуч еом фу!',
+               'Айфзл фиф мбчд ыотщчд гяпьевцащчд рвъэщ уп скюфш жпн хф!',
+               'Бкхим хйх нвше ьпуъше дарэжгчбъше сгыюъ фр тляхщ зро цх!',
+               'Влцйн цкц огщж эрфыщж ебсюздшвыщж тдьяы хс умацъ исп чц!',
+               'Гмчко члч пдъз юсхьъз жвтяиещгьъз уеэаь цт фнбчы йтр шч!',
+               'Дншлп шмш реыи ятцэыи згуайжъдэыи фжюбэ чу ховшь кус щш!',
+               'Еощмр щнщ сжьй аучюьй идфбкзыеюьй хзявю шф цпгщэ лфт ъщ!',
+               'Жпънс ъоъ тзэк бфшяэк йехвлиьжяэк циагя щх чрдъю мху ыъ!',
+               'Зрыот ыпы уиюл вхщаюл кжцгмйэзаюл чйбда ъц шсеыя нцф ьы!',
+               'Исьпу ьрь фйям гцъбям лзчднкюибям шквеб ыч щтжьа очх эь!',
+               'Йтэрф эсэ хкан дчыван мишеоляйван щлгжв ьш ъузэб пшц юэ!',
+               'Куюсх ютю цлбо ешьгбо нйщжпмакгбо ъмдзг эщ ыфиюв рщч яю!',
+               'Лфятц яуя чмвп жщэдвп окъзрнблдвп ынеид юъ ьхйяг съш ая!',
+               'Мхауч афа шнгр зъюегр плыисовмегр ьожйе яы эцкад тыщ ба!',
+               'Нцбфш бхб щодс иыяждс рмьйтпгнждс эпзкж аь ючлбе уьъ вб!',
+               'Очвхщ вцв ъпет йьазет снэкурдозет юрилз бэ яшмвж фэы гв!',
+               'Пшгцъ гчг ыржу кэбижу тоюлфсепижу ясйми вю ащнгз хюь дг!',
+               'Рщдчы дшд ьсзф лювйзф упямхтжрйзф аткнй гя бъоди цяэ ед!']
 
 
 def test_encrypt_zero_shift_en():
-    pass
+    assert 'The quick brown fox jumps over the lazy dog.' == \
+           Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', 0, 'en')
 
 
 def test_encrypt_single_shift_en():
-    pass
+    assert 'Uif rvjdl cspxo gpy kvnqt pwfs uif mbaz eph.' == \
+           Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', 1, 'en')
 
 
-def test_encrypt_32_shift_en():
-    pass
+def test_encrypt_26_shift_en():
+    assert 'The quick brown fox jumps over the lazy dog.' == \
+           Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', 26, 'en')
 
 
-def test_encrypt_31_shift_en():
-    pass
+def test_encrypt_25_shift_en():
+    assert 'Sgd pthbj aqnvm enw itlor nudq sgd kzyx cnf.' == \
+           Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', 25, 'en')
 
 
 def test_encrypt_43_shift_en():
-    pass
+    assert 'Kyv hlztb sifne wfo aldgj fmvi kyv crqp ufx.' == \
+           Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', 43, 'en')
 
 
 def test_decrypt_encrypted_sequence_en():
-    pass
+    for i in range(300):
+        assert Caesar.decrypt_text(
+            Caesar.encrypt_text('The quick brown fox jumps over the lazy dog.', i, 'en'), i, 'en') == \
+               'The quick brown fox jumps over the lazy dog.'
 
 
 def test_decrypt_encrypted_text_without_shift_en():
-    pass
+    assert Caesar.decrypt_text_without_shift('The quick brown fox jumps over the lazy dog.', 'en') \
+           == ['The quick brown fox jumps over the lazy dog.',
+               'Uif rvjdl cspxo gpy kvnqt pwfs uif mbaz eph.',
+               'Vjg swkem dtqyp hqz lworu qxgt vjg ncba fqi.',
+               'Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.',
+               'Xli uymgo fvsar jsb nyqtw sziv xli pedc hsk.',
+               'Ymj vznhp gwtbs ktc ozrux tajw ymj qfed itl.',
+               'Znk waoiq hxuct lud pasvy ubkx znk rgfe jum.',
+               'Aol xbpjr iyvdu mve qbtwz vcly aol shgf kvn.',
+               'Bpm ycqks jzwev nwf rcuxa wdmz bpm tihg lwo.',
+               'Cqn zdrlt kaxfw oxg sdvyb xena cqn ujih mxp.',
+               'Dro aesmu lbygx pyh tewzc yfob dro vkji nyq.',
+               'Esp bftnv mczhy qzi ufxad zgpc esp wlkj ozr.',
+               'Ftq cguow ndaiz raj vgybe ahqd ftq xmlk pas.',
+               'Gur dhvpx oebja sbk whzcf bire gur ynml qbt.',
+               'Hvs eiwqy pfckb tcl xiadg cjsf hvs zonm rcu.',
+               'Iwt fjxrz qgdlc udm yjbeh dktg iwt apon sdv.',
+               'Jxu gkysa rhemd ven zkcfi eluh jxu bqpo tew.',
+               'Kyv hlztb sifne wfo aldgj fmvi kyv crqp ufx.',
+               'Lzw imauc tjgof xgp bmehk gnwj lzw dsrq vgy.',
+               'Max jnbvd ukhpg yhq cnfil hoxk max etsr whz.',
+               'Nby kocwe vliqh zir dogjm ipyl nby futs xia.',
+               'Ocz lpdxf wmjri ajs ephkn jqzm ocz gvut yjb.',
+               'Pda mqeyg xnksj bkt fqilo kran pda hwvu zkc.',
+               'Qeb nrfzh yoltk clu grjmp lsbo qeb ixwv ald.',
+               'Rfc osgai zpmul dmv hsknq mtcp rfc jyxw bme.',
+               'Sgd pthbj aqnvm enw itlor nudq sgd kzyx cnf.']
 
 
