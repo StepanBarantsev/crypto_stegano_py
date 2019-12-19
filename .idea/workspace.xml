@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d3278977-fcf6-4bde-8e56-140a8b8c1ca5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto_algs/Caesar.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_algs/Caesar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crypto_algs/Caesar.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
               <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="104" column="19" lean-forward="true" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -64,6 +72,7 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/crypto_algs/tests/CaesarTests.py" />
         <option value="$PROJECT_DIR$/crypto_algs/Caesar.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -197,30 +206,17 @@
       <option name="presentableId" value="Default" />
       <updated>1575035092877</updated>
     </task>
+    <task id="LOCAL-00001" summary="Correct mistake in Caesar text method">
+      <created>1576716942123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576716942124</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 34m 19s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 34m 44s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 35m 30s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 36m 46s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 37m 03s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 38m 36s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 39m 28s.xml">
-      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 40m 50s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
@@ -230,17 +226,38 @@
     <history-entry file="pytest_in_CaesarTests_py - 2019.12.15 at 04h 44m 46s.xml">
       <configuration name="pytest in CaesarTests.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 51m 11s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 51m 41s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 52m 34s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 53m 06s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 53m 31s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 54m 03s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_CaesarTests_py - 2019.12.19 at 03h 54m 24s.xml">
+      <configuration name="pytest in CaesarTests.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -256,6 +273,20 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Correct mistake in Caesar text method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct mistake in Caesar text method" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website.py" />
@@ -303,6 +334,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="104" column="19" lean-forward="true" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="19" />
         </state>
       </provider>
     </entry>
