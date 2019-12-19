@@ -50,7 +50,6 @@ class Caesar:
             if i in alphabet_lower:
                 new_text += chr(((ord(i) - ord_first_letter_lower + shift) % len(alphabet_lower) + ord_first_letter_lower))
             elif i in alphabet_upper:
-                print(i)
                 new_text += chr(((ord(i) - ord_first_letter_upper + shift) % len(alphabet_upper) + ord_first_letter_upper))
             else:
                 new_text += i
@@ -63,7 +62,9 @@ class Caesar:
     @staticmethod
     def decrypt_text_without_shift(text, lang):
         lst = []
-        for i in range(len(Caesar.return_language_alphabet(lang))):
+        # There are as many capital letters as lowercase
+        l = len(Caesar.return_language_alphabet(lang)['lower'])
+        for i in range(l):
             lst.append(Caesar.encrypt_text(text, i, lang))
         return lst
 
@@ -88,8 +89,4 @@ class Caesar:
 
 
 if __name__ == '__main__':
-    seq = Caesar.encrypt(b'\xd1\x92\xd1\xb1\xd1\xba\xd2\x83\xd2\x8c', 42)
-    print(seq)
-    seq = Caesar.decrypt(seq, 42)
-    print(seq)
-    print(Caesar.decrypt_without_shift(b'\xff'))
+    print(Caesar.decrypt_text_without_shift('Съешь еще этих мягких французских булок да выпей чаю же!', 'ru'))
