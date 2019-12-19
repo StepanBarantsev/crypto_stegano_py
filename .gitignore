@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 configs/__init__.py
 .idea/workspace.xml
+.idea/vcs.xml
