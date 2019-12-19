@@ -119,7 +119,8 @@ def test_decrypt_encrypted_sequence_without_shift():
 # text assertions
 
 def test_encrypt_zero_shift_ru():
-    Caesar.encrypt_text('Съешь ещё этих мягких французских булок да выпей чаю же!', 0, 'ru')
+    assert 'Съешь ещё этих мягких французских булок да выпей чаю же!' == \
+           Caesar.encrypt_text('Съешь ещё этих мягких французских булок да выпей чаю же!', 0, 'ru')
 
 
 def test_encrypt_single_shift_ru():
