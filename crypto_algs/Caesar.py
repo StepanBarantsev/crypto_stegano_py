@@ -43,18 +43,18 @@ class Caesar:
             raise TypeError('Type of shift must be integer')
         alphabet_lower = Caesar.return_language_alphabet(lang)['lower']
         alphabet_upper = Caesar.return_language_alphabet(lang)['upper']
-        text = text.lower()
         ord_first_letter_lower = ord(alphabet_lower[0])
         ord_first_letter_upper = ord(alphabet_upper[0])
         new_text = ''
         for i in text:
             if i in alphabet_lower:
                 new_text += chr(((ord(i) - ord_first_letter_lower + shift) % len(alphabet_lower) + ord_first_letter_lower))
-            if i in alphabet_upper:
+            elif i in alphabet_upper:
+                print(i)
                 new_text += chr(((ord(i) - ord_first_letter_upper + shift) % len(alphabet_upper) + ord_first_letter_upper))
             else:
                 new_text += i
-        return
+        return new_text
 
     @staticmethod
     def decrypt_text(text, shift, lang):
