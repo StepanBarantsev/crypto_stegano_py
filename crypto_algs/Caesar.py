@@ -23,12 +23,12 @@ class Caesar:
         return bytes(new_sequence)
 
     @staticmethod
-    def decrypt(encrypted_sequence, shift):
+    def decrypt(encrypted_sequence: bytes, shift: int) -> bytes:
         return Caesar.encrypt(encrypted_sequence, -shift)
 
     # Returns a list of possible decryption
     @staticmethod
-    def decrypt_without_shift(encrypted_sequence):
+    def decrypt_without_shift(encrypted_sequence: bytes) -> list:
         lst = []
         for i in range(256):
             lst.append(Caesar.decrypt(encrypted_sequence, i))
@@ -36,7 +36,7 @@ class Caesar:
 
     # return text in lower case
     @staticmethod
-    def encrypt_text(text, shift, lang):
+    def encrypt_text(text: str, shift: int, lang: str) -> str:
         if type(text) != str:
             raise TypeError('Text must be str type')
         if type(shift) != int:
@@ -56,11 +56,11 @@ class Caesar:
         return new_text
 
     @staticmethod
-    def decrypt_text(text, shift, lang):
+    def decrypt_text(text: str, shift: int, lang: str) -> str:
         return Caesar.encrypt_text(text, -shift, lang)
 
     @staticmethod
-    def decrypt_text_without_shift(text, lang):
+    def decrypt_text_without_shift(text: str, lang: str) -> list:
         lst = []
         # There are as many capital letters as lowercase
         l = len(Caesar.return_language_alphabet(lang)['lower'])
@@ -69,7 +69,7 @@ class Caesar:
         return lst
 
     @staticmethod
-    def return_language_alphabet(language):
+    def return_language_alphabet(language: str) -> dict:
         # letters must be in alphabet order
         lang_dict = {"ru":
                         {
