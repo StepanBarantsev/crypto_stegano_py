@@ -340,7 +340,33 @@ class CLI_Caesar:
     @staticmethod
     def decrypt_text():
         os.system('cls' if os.name == 'nt' else 'clear')
-        pass
+        CLI_Caesar.print_info_about_dt_mode()
+        # If user wan't to stop this func we use this variable
+        ret_flag = [False]
+
+        filename = CLI_Caesar.read_correct_text_filename(ret_flag,
+                                                         '[Caesar][Decrypt txt] Enter the full path to the file you want to encrypt (with extension): ',
+                                                         'e')
+        if ret_flag[0]:
+            return
+
+        shift = CLI_Caesar.read_correct_shift(ret_flag,
+                                              '[Caesar][Decrypt txt] Enter any natural number (this is secret key): ',
+                                              'e')
+        if ret_flag[0]:
+            return
+        lang = CLI_Caesar.read_correct_lang(ret_flag,
+                                            '[Caesar][Decrypt txt] Enter language (ru or en): ', 'et')
+        # At this step, we believe that we have the correct file name, shift and lang
+        with open(filename, 'r', encoding='UTF-8') as f:
+            txt = f.read()
+            # There is directory for saving encrypted file
+            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            with open(path_to_file + 'output.' + extension, 'w', encoding='UTF-8') as g:
+                g.write(Caesar.decrypt_text(txt, shift, lang))
+
+        print()
+        print('Decryption was successful. You can see result in the file named output.' + extension)
 
     @staticmethod
     def print_info_about_dt_mode():
