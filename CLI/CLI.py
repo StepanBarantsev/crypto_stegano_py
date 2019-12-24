@@ -153,6 +153,8 @@ class CLI_Caesar:
             CLI_Caesar.print_info_about_encryption_mode()
         elif mode == 'd':
             CLI_Caesar.print_info_about_decryption_mode()
+        elif mode == 'dws':
+            CLI_Caesar.print_info_about_dws_mode()
 
     @staticmethod
     def read_correct_filename(ret_flag, text, mode):
@@ -231,7 +233,34 @@ class CLI_Caesar:
     @staticmethod
     def decrypt_without_shift():
         os.system('cls' if os.name == 'nt' else 'clear')
-        pass
+        CLI_Caesar.print_info_about_dws_mode()
+        # If user wan't to stop this func we use this variable
+        ret_flag = [False]
+        filename = CLI_Caesar.read_correct_filename(ret_flag,
+                                                    '[Caesar][Dws] Enter the full path to the file you want to decrypt (with extension): ',
+                                                    'dws')
+        if ret_flag[0]:
+            return
+
+        # At this step, we believe that we have the correct file name
+        with open(filename, 'rb') as f:
+            seq = f.read()
+            # There is directory for saving encrypted file
+            extension, path_to_file = CLI_Caesar.get_file_path_and_file_extension(filename)
+            lst = Caesar.decrypt_without_shift(seq)
+            for i, element in enumerate(lst):
+                with open(path_to_file + 'output%s.' % i + extension, 'wb') as g:
+                    g.write(element)
+
+        print()
+        print('Decryption was successful. You can see result in the file named output.' + extension)
+
+    @staticmethod
+    def print_info_about_dws_mode():
+        print('Hello -- You are in the Caesar Decryption without shift mode now. Enter Return to go to Caesar mode.')
+        print('If you want to decrypt data, follow the instructions in the program.')
+        print()
+
 
     @staticmethod
     def encrypt_text():
