@@ -80,10 +80,7 @@ class CLI_Caesar:
                 CLI_Caesar.decrypt_text_without_shift()
             else:
                 print('Unknown command')
-            print()
-            # Empty input so that the text is not overwritten immediately
-            input('Press Enter')
-            os.system('cls' if os.name == 'nt' else 'clear')
+            CLI_Caesar.print_press_enter_and_clear_screen()
 
     @staticmethod
     def print_available_commands():
@@ -103,23 +100,26 @@ class CLI_Caesar:
         CLI_Caesar.print_info_about_encryption_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
-        filename = CLI_Caesar.read_correct_filename(ret_flag)
+        filename = CLI_Caesar.read_correct_filename(ret_flag,
+                                                    '[Caesar][Encrypt] Enter the full path to the file you want to encrypt (with extension): ',
+                                                    'e')
         if ret_flag[0]:
             return
-        shift = CLI_Caesar.read_correct_shift(ret_flag)
+        shift = CLI_Caesar.read_correct_shift(ret_flag,
+                                              '[Caesar][Encrypt] Enter any natural number (this is secret key): ',
+                                              'e')
         if ret_flag[0]:
             return
         # At this step, we believe that we have the correct file name and shift
         with open(filename, 'rb') as f:
             seq = f.read()
             # There is directory for saving encrypted file
-            path_to_file = filename.replace(os.path.basename(filename), '')
-            extension = os.path.basename(filename).split('.')[1]
+            extension, path_to_file = CLI_Caesar.get_file_path_and_file_extension(filename)
             with open(path_to_file + 'output.' + extension, 'wb') as g:
                 g.write(Caesar.encrypt(seq, shift))
 
         print()
-        print('Encryption was successful. You can see result in the file named output' + extension)
+        print('Encryption was successful. You can see result in the file named output.' + extension)
 
     @staticmethod
     def print_info_about_encryption_mode():
@@ -128,10 +128,10 @@ class CLI_Caesar:
         print()
 
     @staticmethod
-    def read_correct_shift(ret_flag):
+    def read_correct_shift(ret_flag, text, mode):
         shift = None
         while shift is None:
-            shift = input('[Caesar][Encrypt] Enter any natural number (this is secret key): ')
+            shift = input(text)
             if shift == 'Return' or shift == 'return':
                 ret_flag[0] = True
                 return
@@ -141,19 +141,24 @@ class CLI_Caesar:
                     raise ValueError
             except ValueError:
                 print("Secret key must be natural number!")
-                print()
-                input('Press Enter')
-                os.system('cls' if os.name == 'nt' else 'clear')
-                CLI_Caesar.print_info_about_encryption_mode()
+                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
                 shift = None
                 continue
         return shift
 
     @staticmethod
-    def read_correct_filename(ret_flag):
+    def clear_screen_and_print_info_about_mode(mode):
+        CLI_Caesar.print_press_enter_and_clear_screen()
+        if mode == 'e':
+            CLI_Caesar.print_info_about_encryption_mode()
+        elif mode == 'd':
+            CLI_Caesar.print_info_about_decryption_mode()
+
+    @staticmethod
+    def read_correct_filename(ret_flag, text, mode):
         filename = None
         while filename is None:
-            filename = input('[Caesar][Encrypt] Enter the full path to the file you want to encrypt (with extension): ')
+            filename = input(text)
             # Let the user exit encryption mode at any time
             # Although it looks very ugly
             if filename == 'Return' or filename == 'return':
@@ -162,19 +167,66 @@ class CLI_Caesar:
             try:
                 open(filename, 'rb')
             except IOError:
-                print("Can't open file. Try to enter path again.")
                 print()
-                input('Press Enter')
-                os.system('cls' if os.name == 'nt' else 'clear')
-                CLI_Caesar.print_info_about_encryption_mode()
+                print("Can't open file. Try to enter path again.")
+                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
                 filename = None
                 continue
+
+            # Check that there are no dots in the file name
+            split_by_dot = os.path.basename(filename).split('.')
+            if len(split_by_dot) != 2:
+                print()
+                print('There should be no dots in the file name! Or maybe the file has several extensions.')
+                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
+                filename = None
+
         return filename
+
+    @staticmethod
+    def print_press_enter_and_clear_screen():
+        print()
+        input('Press Enter')
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     @staticmethod
     def decrypt():
         os.system('cls' if os.name == 'nt' else 'clear')
-        pass
+        CLI_Caesar.print_info_about_decryption_mode()
+        # If user wan't to stop this func we use this variable
+        ret_flag = [False]
+        filename = CLI_Caesar.read_correct_filename(ret_flag,
+                                                    '[Caesar][Decrypt] Enter the full path to the file you want to decrypt (with extension): ',
+                                                    'd')
+        if ret_flag[0]:
+            return
+        shift = CLI_Caesar.read_correct_shift(ret_flag,
+                                              '[Caesar][Decrypt] Enter any natural number (this is secret key): ',
+                                              'd')
+        if ret_flag[0]:
+            return
+        # At this step, we believe that we have the correct file name and shift
+        with open(filename, 'rb') as f:
+            seq = f.read()
+            # There is directory for saving encrypted file
+            extension, path_to_file = CLI_Caesar.get_file_path_and_file_extension(filename)
+            with open(path_to_file + 'output.' + extension, 'wb') as g:
+                g.write(Caesar.decrypt(seq, shift))
+
+        print()
+        print('Decryption was successful. You can see result in the file named output.' + extension)
+
+    @staticmethod
+    def get_file_path_and_file_extension(filename):
+        path_to_file = filename.replace(os.path.basename(filename), '')
+        extension = os.path.basename(filename).split('.')[1]
+        return extension, path_to_file
+
+    @staticmethod
+    def print_info_about_decryption_mode():
+        print('Hello -- You are in the Caesar Decryption mode now. Enter Return to go to Caesar mode.')
+        print('If you want to decrypt data, follow the instructions in the program.')
+        print()
 
     @staticmethod
     def decrypt_without_shift():
