@@ -1,5 +1,6 @@
 import sys
 import os
+from CLI_Helper import CLI_Helper
 
 # We can't import class from another folder without this line
 sys.path.append('../')
@@ -62,14 +63,14 @@ class CLI_Caesar:
         CLI_Caesar.print_info_about_encryption_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
-        filename = CLI_Caesar.read_correct_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename(ret_flag,
                                                     '[Caesar][Encrypt] Enter the full path to the file you want to encrypt (with extension): ',
-                                                    'e')
+                                                    'e', CLI_Caesar)
         if ret_flag[0]:
             return
-        shift = CLI_Caesar.read_correct_shift(ret_flag,
+        shift = CLI_Helper.read_correct_shift(ret_flag,
                                               '[Caesar][Encrypt] Enter any natural number (this is secret key): ',
-                                              'e')
+                                              'e', CLI_Caesar)
         if ret_flag[0]:
             return
         # At this step, we believe that we have the correct file name and shift
@@ -90,25 +91,6 @@ class CLI_Caesar:
         print()
 
     @staticmethod
-    def read_correct_shift(ret_flag, text, mode):
-        shift = None
-        while shift is None:
-            shift = input(text)
-            if shift == 'Return' or shift == 'return':
-                ret_flag[0] = True
-                return
-            try:
-                shift = int(shift)
-                if shift <= 0:
-                    raise ValueError
-            except ValueError:
-                print("Secret key must be natural number!")
-                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
-                shift = None
-                continue
-        return shift
-
-    @staticmethod
     def clear_screen_and_print_info_about_mode(mode):
         CLI_Caesar.print_press_enter_and_clear_screen()
         if mode == 'e':
@@ -125,35 +107,6 @@ class CLI_Caesar:
             CLI_Caesar.print_info_about_dtws_mode()
 
     @staticmethod
-    def read_correct_filename(ret_flag, text, mode):
-        filename = None
-        while filename is None:
-            filename = input(text)
-            # Let the user exit encryption mode at any time
-            # Although it looks very ugly
-            if filename == 'Return' or filename == 'return':
-                ret_flag[0] = True
-                break
-            try:
-                open(filename, 'rb')
-            except IOError:
-                print()
-                print("Can't open file. Try to enter path again.")
-                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
-                filename = None
-                continue
-
-            # Check that there are no dots in the file name
-            split_by_dot = os.path.basename(filename).split('.')
-            if len(split_by_dot) != 2:
-                print()
-                print('There should be no dots in the file name! Or maybe the file has several extensions.')
-                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
-                filename = None
-
-        return filename
-
-    @staticmethod
     def print_press_enter_and_clear_screen():
         print()
         input('Press Enter')
@@ -165,14 +118,14 @@ class CLI_Caesar:
         CLI_Caesar.print_info_about_decryption_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
-        filename = CLI_Caesar.read_correct_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename(ret_flag,
                                                     '[Caesar][Decrypt] Enter the full path to the file you want to decrypt (with extension): ',
-                                                    'd')
+                                                    'd', CLI_Caesar)
         if ret_flag[0]:
             return
-        shift = CLI_Caesar.read_correct_shift(ret_flag,
+        shift = CLI_Helper.read_correct_shift(ret_flag,
                                               '[Caesar][Decrypt] Enter any natural number (this is secret key): ',
-                                              'd')
+                                              'd', CLI_Caesar)
         if ret_flag[0]:
             return
         # At this step, we believe that we have the correct file name and shift
@@ -182,7 +135,6 @@ class CLI_Caesar:
             extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
             with open(path_to_file + 'output.' + extension, 'wb') as g:
                 g.write(Caesar.decrypt(seq, shift))
-
         print()
         print('Decryption was successful. You can see result in the file named output.' + extension)
 
@@ -204,9 +156,9 @@ class CLI_Caesar:
         CLI_Caesar.print_info_about_dws_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
-        filename = CLI_Caesar.read_correct_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename(ret_flag,
                                                     '[Caesar][Dws] Enter the full path to the file you want to decrypt (with extension): ',
-                                                    'dws')
+                                                    'dws', CLI_Caesar)
         if ret_flag[0]:
             return
 
@@ -230,22 +182,6 @@ class CLI_Caesar:
         print()
 
     @staticmethod
-    def read_correct_lang(ret_flag, text, mode):
-        lang = None
-        while lang is None:
-            lang = input(text)
-            if lang == 'Return' or lang == 'return':
-                ret_flag[0] = True
-                return
-            if lang != 'ru' and lang != 'en':
-                print()
-                print("This is unsupported lang!")
-                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
-                lang = None
-                continue
-        return lang
-
-    @staticmethod
     def check_txt_extension(filename):
         extension, path = CLI_Caesar.get_file_extension_and_file_path(filename)
         return extension == 'txt'
@@ -254,7 +190,7 @@ class CLI_Caesar:
     def read_correct_text_filename(ret_flag, text, mode):
         filename = None
         while filename is None:
-            filename = CLI_Caesar.read_correct_filename(ret_flag, text, mode)
+            filename = CLI_Helper.read_correct_filename(ret_flag, text, mode, CLI_Caesar)
             if not(CLI_Caesar.check_txt_extension(filename)):
                 print()
                 print('File extension must be txt!')
@@ -275,13 +211,13 @@ class CLI_Caesar:
         if ret_flag[0]:
             return
 
-        shift = CLI_Caesar.read_correct_shift(ret_flag,
+        shift = CLI_Helper.read_correct_shift(ret_flag,
                                               '[Caesar][Encrypt txt] Enter any natural number (this is secret key): ',
-                                              'e')
+                                              'e', CLI_Caesar)
         if ret_flag[0]:
             return
-        lang = CLI_Caesar.read_correct_lang(ret_flag,
-                                            '[Caesar][Encrypt txt] Enter language (ru or en): ', 'et')
+        lang = CLI_Helper.read_correct_lang(ret_flag,
+                                            '[Caesar][Encrypt txt] Enter language (ru or en): ', 'et', CLI_Caesar)
         if ret_flag[0]:
             return
         # At this step, we believe that we have the correct file name, shift and lang
@@ -314,13 +250,13 @@ class CLI_Caesar:
         if ret_flag[0]:
             return
 
-        shift = CLI_Caesar.read_correct_shift(ret_flag,
+        shift = CLI_Helper.read_correct_shift(ret_flag,
                                               '[Caesar][Decrypt txt] Enter any natural number (this is secret key): ',
-                                              'dt')
+                                              'dt', CLI_Caesar)
         if ret_flag[0]:
             return
-        lang = CLI_Caesar.read_correct_lang(ret_flag,
-                                            '[Caesar][Decrypt txt] Enter language (ru or en): ', 'dt')
+        lang = CLI_Helper.read_correct_lang(ret_flag,
+                                            '[Caesar][Decrypt txt] Enter language (ru or en): ', 'dt', CLI_Caesar)
         if ret_flag[0]:
             return
         # At this step, we believe that we have the correct file name, shift and lang
@@ -352,8 +288,8 @@ class CLI_Caesar:
         if ret_flag[0]:
             return
 
-        lang = CLI_Caesar.read_correct_lang(ret_flag,
-                                            '[Caesar][Dtws] Enter language (ru or en): ', 'dtws')
+        lang = CLI_Helper.read_correct_lang(ret_flag,
+                                            '[Caesar][Dtws] Enter language (ru or en): ', 'dtws', CLI_Caesar)
         if ret_flag[0]:
             return
 

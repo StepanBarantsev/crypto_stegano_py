@@ -40,5 +40,4 @@ class CLI:
         CLI_Caesar.start()
 
 
-
 CLI.start()
