@@ -110,3 +110,4 @@ telegram_bot/CryptoSteganoBot.session-journal
 telegram_bot/settings.py
 .idea/encodings.xml
 .idea/encodings.xml
+telegram_bot/dbconfiguration.py
