@@ -1,3 +1,6 @@
+import os
+
+
 class CLI_Helper:
 
     def __init__(self):
@@ -66,3 +69,26 @@ class CLI_Helper:
                 lang = None
                 continue
         return lang
+
+    @staticmethod
+    def read_correct_filename_with_extension_check(ret_flag, text, mode, extension, abstract_class):
+        filename = None
+        while filename is None:
+            filename = CLI_Helper.read_correct_filename(ret_flag, text, mode, abstract_class)
+            if not(CLI_Helper.check_extension(filename, extension)):
+                print()
+                print('File extension must be %s!' % extension)
+                abstract_class.clear_screen_and_print_info_about_mode(mode)
+                filename = None
+        return filename
+
+    @staticmethod
+    def check_extension(filename, extension):
+        file_extension, path = CLI_Helper.get_file_extension_and_file_path(filename)
+        return file_extension == extension
+
+    @staticmethod
+    def get_file_extension_and_file_path(filename):
+        path_to_file = filename.replace(os.path.basename(filename), '')
+        extension = os.path.basename(filename).split('.')[1]
+        return extension, path_to_file

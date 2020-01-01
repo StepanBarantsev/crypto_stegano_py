@@ -77,7 +77,7 @@ class CLI_Caesar:
         with open(filename, 'rb') as f:
             seq = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             with open(path_to_file + 'output.' + extension, 'wb') as g:
                 g.write(Caesar.encrypt(seq, shift))
 
@@ -132,17 +132,11 @@ class CLI_Caesar:
         with open(filename, 'rb') as f:
             seq = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             with open(path_to_file + 'output.' + extension, 'wb') as g:
                 g.write(Caesar.decrypt(seq, shift))
         print()
         print('Decryption was successful. You can see result in the file named output.' + extension)
-
-    @staticmethod
-    def get_file_extension_and_file_path(filename):
-        path_to_file = filename.replace(os.path.basename(filename), '')
-        extension = os.path.basename(filename).split('.')[1]
-        return extension, path_to_file
 
     @staticmethod
     def print_info_about_decryption_mode():
@@ -166,7 +160,7 @@ class CLI_Caesar:
         with open(filename, 'rb') as f:
             seq = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             lst = Caesar.decrypt_without_shift(seq)
             for i, element in enumerate(lst):
                 with open(path_to_file + 'output%s.' % i + extension, 'wb') as g:
@@ -182,32 +176,15 @@ class CLI_Caesar:
         print()
 
     @staticmethod
-    def check_txt_extension(filename):
-        extension, path = CLI_Caesar.get_file_extension_and_file_path(filename)
-        return extension == 'txt'
-
-    @staticmethod
-    def read_correct_text_filename(ret_flag, text, mode):
-        filename = None
-        while filename is None:
-            filename = CLI_Helper.read_correct_filename(ret_flag, text, mode, CLI_Caesar)
-            if not(CLI_Caesar.check_txt_extension(filename)):
-                print()
-                print('File extension must be txt!')
-                CLI_Caesar.clear_screen_and_print_info_about_mode(mode)
-                filename = None
-        return filename
-
-    @staticmethod
     def encrypt_text():
         os.system('cls' if os.name == 'nt' else 'clear')
         CLI_Caesar.print_info_about_et_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
 
-        filename = CLI_Caesar.read_correct_text_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename_with_extension_check(ret_flag,
                                                     '[Caesar][Encrypt txt] Enter the full path to the file you want to encrypt (with extension): ',
-                                                    'e')
+                                                    'e', 'txt', CLI_Caesar)
         if ret_flag[0]:
             return
 
@@ -224,7 +201,7 @@ class CLI_Caesar:
         with open(filename, 'r', encoding='UTF-8') as f:
             txt = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             with open(path_to_file + 'output.' + extension, 'w', encoding='UTF-8') as g:
                 g.write(Caesar.encrypt_text(txt, shift, lang))
 
@@ -244,9 +221,9 @@ class CLI_Caesar:
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
 
-        filename = CLI_Caesar.read_correct_text_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename_with_extension_check(ret_flag,
                                                          '[Caesar][Decrypt txt] Enter the full path to the file you want to encrypt (with extension): ',
-                                                         'dt')
+                                                         'dt', 'txt', CLI_Caesar)
         if ret_flag[0]:
             return
 
@@ -263,7 +240,7 @@ class CLI_Caesar:
         with open(filename, 'r', encoding='UTF-8') as f:
             txt = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             with open(path_to_file + 'output.' + extension, 'w', encoding='UTF-8') as g:
                 g.write(Caesar.decrypt_text(txt, shift, lang))
 
@@ -282,9 +259,9 @@ class CLI_Caesar:
         CLI_Caesar.print_info_about_dtws_mode()
         # If user wan't to stop this func we use this variable
         ret_flag = [False]
-        filename = CLI_Caesar.read_correct_text_filename(ret_flag,
+        filename = CLI_Helper.read_correct_filename_with_extension_check(ret_flag,
                                                     '[Caesar][Dtws] Enter the full path to the file you want to decrypt (with extension): ',
-                                                    'dtws')
+                                                    'dtws', 'txt', CLI_Caesar)
         if ret_flag[0]:
             return
 
@@ -297,7 +274,7 @@ class CLI_Caesar:
         with open(filename, 'r', encoding='UTF-8') as f:
             txt = f.read()
             # There is directory for saving encrypted file
-            extension, path_to_file = CLI_Caesar.get_file_extension_and_file_path(filename)
+            extension, path_to_file = CLI_Helper.get_file_extension_and_file_path(filename)
             lst = Caesar.decrypt_text_without_shift(txt, lang)
             for i, element in enumerate(lst):
                 with open(path_to_file + 'output%s.' % i + extension, 'w', encoding='UTF-8') as g:
