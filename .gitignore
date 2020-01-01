@@ -105,3 +105,8 @@ venv.bak/
 configs/__init__.py
 .idea/workspace.xml
 .idea/vcs.xml
+telegram_bot/CryptoSteganoBot.session
+telegram_bot/CryptoSteganoBot.session-journal
+telegram_bot/settings.py
+.idea/encodings.xml
+.idea/encodings.xml
