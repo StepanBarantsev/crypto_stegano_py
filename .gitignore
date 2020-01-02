@@ -111,3 +111,7 @@ telegram_bot/settings.py
 .idea/encodings.xml
 .idea/encodings.xml
 telegram_bot/database.vdb
+telegram_bot/data.bak
+telegram_bot/data.dat
+telegram_bot/data.dir
+telegram_bot/png
