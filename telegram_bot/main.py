@@ -225,7 +225,7 @@ def get_shift(message):
                      dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_ET or
                      dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_DT)
 def get_lang(message):
-    if message.text == 'ru' or message.text == 'en':
+    if not (message.text == 'ru' or message.text == 'en'):
         bot.send_message(message.chat.id, "Language can be only en or ru!")
     else:
         dbworker.set_data(message.chat.id, 'lang', message.text)
