@@ -241,7 +241,7 @@ def get_lang(message):
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_DT:
             bot.send_message(message.chat.id, '''So, there is your output file!''')
-            bot.send_document(message.chat.id, Caesar.encrypt_text(dbworker.get_data(message.chat.id, 'file'),
+            bot.send_document(message.chat.id, Caesar.decrypt_text(dbworker.get_data(message.chat.id, 'file'),
                                                                    dbworker.get_data(message.chat.id, 'shift'),
                                                                    dbworker.get_data(message.chat.id, 'lang')).encode('UTF-8'))
             dbworker.clear_data(message.chat.id)
