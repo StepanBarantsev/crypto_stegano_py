@@ -113,7 +113,7 @@ Use the /help command to find out which commands are available.''')
 @bot.message_handler(func=lambda message:
                      dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_ENCRYPT or
                      dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_DECRYPT,
-                     content_types=['document', 'audio', 'video', 'photo', 'voice'])
+                     content_types=['document'])
 def get_file(message):
 
     raw = bot.get_file(message.document.file_id)
@@ -170,7 +170,7 @@ def get_file_txt(message):
                                     'new_chat_members', 'left_chat_member', 'new_chat_title',
                                     'new_chat_photo', 'delete_chat_photo',
                                     'group_chat_created', 'supergroup_chat_created', 'channel_chat_created',
-                                    'migrate_to_chat_id', 'migrate_from_chat_id', 'pinned_message'])
+                                    'migrate_to_chat_id', 'migrate_from_chat_id', 'pinned_message', 'audio', 'video', 'photo', 'voice'])
 def error_file(message):
     bot.send_message(message.chat.id, '''So, you have to send only files!''')
 
@@ -208,11 +208,11 @@ def get_shift(message):
             dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
             dbworker.clear_data(message.chat.id)
 
-        if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_ENCRYPT:
+        if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_ET:
             dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_ET, bot)
             bot.send_message(message.chat.id, '''Input language (ru or en)!''')
 
-        if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_DECRYPT:
+        if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_DT:
             dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_DT, bot)
             bot.send_message(message.chat.id, '''Input language (ru or en)!''')
 
