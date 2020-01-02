@@ -222,8 +222,8 @@ def get_shift(message):
 # COMMANDS: Any natural number
 # GOTO: CAESAR, CAESAR
 @bot.message_handler(func=lambda message:
-                     dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_ET or
-                     dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_DT)
+                     dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_ET or
+                     dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_DT)
 def get_lang(message):
     if message.text == 'ru' or message.text == 'en':
         bot.send_message(message.chat.id, "Language can be only en or ru!")
