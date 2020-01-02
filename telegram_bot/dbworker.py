@@ -11,10 +11,11 @@ def get_current_state(user_id):
             return dbconfiguration.MAIN
 
 
-def set_state(user_id, value):
+def set_state(user_id, value, bot):
     with Vedis(dbconfiguration.db_file) as db:
         try:
             db[user_id] = value
+            bot.send_message(user_id, '''You are in the %s now''' % value)
             return True
         except:
             return False

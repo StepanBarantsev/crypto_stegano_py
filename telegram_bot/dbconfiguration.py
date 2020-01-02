@@ -1,6 +1,6 @@
 db_file = "database.vdb"
 db_file_data = "data"
-MAIN = "MAIN"
+MAIN = "Main menu"
 CAESAR = "CAESAR"
 
 # CAESAR

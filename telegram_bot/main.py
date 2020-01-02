@@ -31,8 +31,7 @@ def test_file_method(message):
 # GOTO: MAIN
 @bot.message_handler(commands=["start", "reset"])
 def go_to_main(message):
-    bot.send_message(message.chat.id, "You are in the Main Menu now")
-    dbworker.set_state(message.chat.id, dbconfiguration.MAIN)
+    dbworker.set_state(message.chat.id, dbconfiguration.MAIN, bot)
     # dbworker.clear_data(message.chat.id)
 
 
@@ -42,9 +41,8 @@ def go_to_main(message):
 # GOTO: CAESAR
 @bot.message_handler(commands=['caesar'])
 def go_to_caesar_mode(message):
-    bot.send_message(message.chat.id, "You are in the Caesar mode now")
-    dbworker.set_state(message.chat.id, dbconfiguration.CAESAR)
-    # dbworker.clear_data(message.chat.id)
+    dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
+    dbworker.clear_data(message.chat.id)
 
 ###########################################################################
 ############################################################################
@@ -88,24 +86,20 @@ decrypt_text or dt -- enter this command to go to text decryption mode''')
 @bot.message_handler(func=is_state_is_caesar)
 def caesar_go_to_any_mode(message):
     if message.text == 'e' or message.text == 'encrypt':
-        bot.send_message(message.chat.id, '''You are in the CAESAR_FILE_ENCRYPT mode now''')
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_ENCRYPT, bot)
         bot.send_message(message.chat.id, '''Send me any file. If you want to send a photo, send it as a file!''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_ENCRYPT)
 
     elif message.text == 'd' or message.text == 'decrypt':
-        bot.send_message(message.chat.id, '''You are in the CAESAR_FILE_DECRYPT mode now''')
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_DECRYPT, bot)
         bot.send_message(message.chat.id, '''Send me any file. If you want to send a photo, send it as a file!''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_DECRYPT)
 
     elif message.text == 'et' or message.text == 'encrypt_text':
-        bot.send_message(message.chat.id, '''You are in the CAESAR_FILE_ET mode now''')
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_ET, bot)
         bot.send_message(message.chat.id, '''Send me txt file (ru or en lang).''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_ET)
 
     elif message.text == 'dt' or message.text == 'decrypt_text':
-        bot.send_message(message.chat.id, '''You are in the CAESAR_FILE_DT mode now''')
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_DT, bot)
         bot.send_message(message.chat.id, '''Send me txt file (ru or en lang).''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_FILE_DT)
 
     else:
         bot.send_message(message.chat.id, '''This is unknown command. 
@@ -128,12 +122,10 @@ def get_file(message):
     bot.send_message(message.chat.id, '''Success (get file)!''')
 
     if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_ENCRYPT:
-        bot.send_message(message.chat.id, '''You are in the CAESAR_SHIFT_ENCRYPT mode now''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_ENCRYPT)
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_ENCRYPT, bot)
 
     if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_DECRYPT:
-        bot.send_message(message.chat.id, '''You are in the CAESAR_SHIFT_DECRYPT mode now''')
-        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_DECRYPT)
+        dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_DECRYPT, bot)
 
     bot.send_message(message.chat.id, '''Send me any natural number (this is your secret key).''')
 
@@ -154,12 +146,10 @@ def get_file_txt(message):
         bot.send_message(message.chat.id, '''Success (get txt file)!''')
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_ET:
-            bot.send_message(message.chat.id, '''You are in the CAESAR_SHIFT_ET mode now''')
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_ET)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_ET, bot)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_FILE_DT:
-            bot.send_message(message.chat.id, '''You are in the CAESAR_SHIFT_DT mode now''')
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_DT)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_SHIFT_DT, bot)
 
         bot.send_message(message.chat.id, '''Send me any natural number (this is your secret key).''')
 
@@ -208,25 +198,23 @@ def get_shift(message):
             bot.send_message(message.chat.id, '''So, there is your output file!''')
             bot.send_document(message.chat.id, Caesar.encrypt(dbworker.get_data(message.chat.id, 'file'),
                                                               dbworker.get_data(message.chat.id, 'shift')))
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
             dbworker.clear_data(message.chat.id)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_DECRYPT:
             bot.send_message(message.chat.id, '''So, there is your output file!''')
             bot.send_document(message.chat.id, Caesar.decrypt(dbworker.get_data(message.chat.id, 'file'),
                                                               dbworker.get_data(message.chat.id, 'shift')))
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
             dbworker.clear_data(message.chat.id)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_ENCRYPT:
-            bot.send_message(message.chat.id, '''You are in the CAESAR_LANG_ET mode now''')
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_ET, bot)
             bot.send_message(message.chat.id, '''Input language (ru or en)!''')
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_ET)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_SHIFT_DECRYPT:
-            bot.send_message(message.chat.id, '''You are in the CAESAR_LANG_DT mode now''')
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_DT, bot)
             bot.send_message(message.chat.id, '''Input language (ru or en)!''')
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR_LANG_DT)
 
 
 # Get lang method
@@ -243,7 +231,7 @@ def get_lang(message):
         dbworker.set_data(message.chat.id, 'lang', message.text)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_ET:
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
             bot.send_message(message.chat.id, '''So, there is your output file!''')
             bot.send_document(message.chat.id, Caesar.encrypt_text(dbworker.get_data(message.chat.id, 'file'),
                                                                    dbworker.get_data(message.chat.id, 'shift'),
@@ -251,13 +239,12 @@ def get_lang(message):
             dbworker.clear_data(message.chat.id)
 
         if dbworker.get_current_state(message.chat.id) == dbconfiguration.CAESAR_LANG_DT:
-            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR)
+            dbworker.set_state(message.chat.id, dbconfiguration.CAESAR, bot)
             bot.send_message(message.chat.id, '''So, there is your output file!''')
             bot.send_document(message.chat.id, Caesar.encrypt_text(dbworker.get_data(message.chat.id, 'file'),
                                                                    dbworker.get_data(message.chat.id, 'shift'),
                                                                    dbworker.get_data(message.chat.id, 'lang')))
             dbworker.clear_data(message.chat.id)
-    
 
 
 ############################################################################
